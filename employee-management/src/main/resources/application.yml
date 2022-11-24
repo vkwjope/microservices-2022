@@ -3,3 +3,11 @@ server:
 spring:
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
+  application:
+    name: employee-management
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+  instance:
+    hostname: localhost
