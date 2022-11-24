@@ -20,13 +20,13 @@ Delete Employee - DELETE - http://localhost:8111/employees/122222
 H2 - In-memory DB
 
 ## Swagger UI (No Configuration is needed for Swagger 3) 
-# Dependencies to be added :
+## Dependencies to be added :
 
-# 1. To enable Swagger
+### 1. To enable Swagger
 org.springdoc springdoc-openapi-ui 1.6.4
 
-# 2. To enable webflux for Swagger
+### 2. To enable webflux for Swagger
 org.springdoc springdoc-openapi-webflux-ui 1.6.4
 
-# Swagger link
+## Swagger link
 http://localhost:8111/swagger-ui/index.html
