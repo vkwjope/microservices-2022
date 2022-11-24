@@ -30,3 +30,10 @@ org.springdoc springdoc-openapi-webflux-ui 1.6.4
 
 ## Swagger link
 http://localhost:8111/swagger-ui/index.html
+
+###### Pending changes
+* Add spring-gateway microservice
+* Add Eureka Server
+* Add Config Server
+* Add AOP logging
+* 
