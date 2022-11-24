@@ -100,6 +100,27 @@ eureka:
     
 ---
 
+## Service 2: API Gateway 
+port : 8711
+
+## API's Calling employee-management service through gateway
+
+Add Employee - POST - http://localhost:8711/employees/add
+
+Get Employee by Id - GET - http://localhost:8711/employees/122222
+
+Get all Employees - GET - http://localhost:8711/employees
+
+Update Employee - PUT - http://localhost:8711/employees/update
+
+Delete Employee - DELETE - http://localhost:8711/employees/122222
+
+
+## Service 3: Service Discovery
+port : 8761
+url : http://localhost:8761/
+
+
 ###### Pending changes
 * Add spring-gateway microservice
 * Add Eureka Server
