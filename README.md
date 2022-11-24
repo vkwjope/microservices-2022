@@ -100,7 +100,7 @@ eureka:
     
 ---
 
-## Service 2: API Gateway 
+## Service 2: api-gateway
 port : 8711
 
 ## API's Calling employee-management service through gateway
@@ -116,7 +116,7 @@ Update Employee - PUT - http://localhost:8711/employees/update
 Delete Employee - DELETE - http://localhost:8711/employees/122222
 
 
-## Service 3: Service Discovery
+## Service 3: service-discovery
 port : 8761
 url : http://localhost:8761/
 
