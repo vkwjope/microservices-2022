@@ -6,6 +6,8 @@ API's
 4. Update Employee      - PUT     - http://localhost:8111/employees/update
 5. Delete Employee      - DELETE  - http://localhost:8111/employees/122222
 
+DB used
+H2 - In-memory DB
 
 Swagger UI (No Configuration is needed for Swagger 3)
 Dependencies to be added :
