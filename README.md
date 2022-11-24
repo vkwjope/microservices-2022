@@ -38,3 +38,7 @@ http://localhost:8111/swagger-ui/index.html
 * Add AOP logging
 * Add a login service with OAuth token validation
 * Enable logs
+
+
+#### References:
+##### Swagger config - https://www.baeldung.com/spring-rest-openapi-documentation
