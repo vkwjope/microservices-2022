@@ -10,18 +10,22 @@ API's
 Swagger UI (No Configuration is needed for Swagger 3)
 Dependencies to be added :
 
-To enable Swagger :
+To enable Swagger 
+
 <dependency>
-			<groupId>org.springdoc</groupId>
-			<artifactId>springdoc-openapi-ui</artifactId>
-			<version>1.6.4</version>
+	<groupId>org.springdoc</groupId>
+	<artifactId>springdoc-openapi-ui</artifactId>
+	<version>1.6.4</version>
 </dependency>
 
+
 To enable webflux for Swagger
+
+
 <dependency>
-			<groupId>org.springdoc</groupId>
-			<artifactId>springdoc-openapi-webflux-ui</artifactId>
-			<version>1.6.4</version>
-		</dependency>
+	<groupId>org.springdoc</groupId>
+	<artifactId>springdoc-openapi-webflux-ui</artifactId>
+	<version>1.6.4</version>
+</dependency>
     
 http://localhost:8111/swagger-ui/index.html
