@@ -31,6 +31,75 @@ org.springdoc springdoc-openapi-webflux-ui 1.6.4
 ## Swagger link
 http://localhost:8111/swagger-ui/index.html
 
+http://localhost:8711/swagger-ui/index.html {API Gateway}
+
+### Adding api-gateway service
+
+1. @EnableEurekaClient annotaion to main class along with dependency
+2. Changes in application.yaml file
+application.yaml
+---
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+      - id: employee-management
+        predicates:
+        - Path=/**
+        uri: lb://employee-management
+server:
+  port: 8711
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+  instance:
+    hostname: localhost
+    
+---
+### Adding discovery service
+1. @EnableEurekaServer to main application file along with dependency
+2. Changes in application.yaml file
+application.yaml
+---
+spring:
+  application:
+    name: discovery-service
+eureka:
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+  instance:
+    hostname: localhost
+server:
+  port: 8761
+  
+---
+
+### Changes in emp-service to register with Eureka and API Gateway
+
+1. @EnableEurekaClient annotaion to main class along with dependency
+2. Changes in application.yaml file
+application.yaml
+---
+server:
+  port: 8111
+spring:
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+  application:
+    name: employee-management
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+  instance:
+    hostname: localhost
+    
+---
+
 ###### Pending changes
 * Add spring-gateway microservice
 * Add Eureka Server
