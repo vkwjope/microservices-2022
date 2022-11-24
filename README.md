@@ -36,4 +36,5 @@ http://localhost:8111/swagger-ui/index.html
 * Add Eureka Server
 * Add Config Server
 * Add AOP logging
-* 
+* Add a login service with OAuth token validation
+* Enable logs
