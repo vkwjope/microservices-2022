@@ -95,7 +95,6 @@ eureka:
     register-with-eureka: true
   instance:
     hostname: localhost
-    
 ```
 
 ## Service 2: api-gateway
@@ -124,16 +123,16 @@ url : http://localhost:8761/
 2. Create a springboot project with dependencies
 ```
 <dependency>
-		<groupId>org.springframework.cloud</groupId>
-		<artifactId>spring-cloud-config-server</artifactId>
+	<groupId>org.springframework.cloud</groupId>
+	<artifactId>spring-cloud-config-server</artifactId>
 </dependency>
 ```
 
 #### This is needed for using bootstrap.property file configuration
 ```
 <dependency>
-		<groupId>org.springframework.cloud</groupId>
-		<artifactId>spring-cloud-starter-bootstrap</artifactId>
+	<groupId>org.springframework.cloud</groupId>
+	<artifactId>spring-cloud-starter-bootstrap</artifactId>
 </dependency>
 ```
 
@@ -148,29 +147,22 @@ spring.cloud.config.server.git.cloneOnStart=false
 management.security.enabled=false
 spring.cloud.config.server.bootstrap=true
 management.endpoints.web.exposure.include=*
-
 ```
 
 ## Changes in employee-management service to use config server 
 1. @RefreshScope annotation for controller class
 2. Dependencies to be added
 ```
-a. 
 <dependency>
 	<groupId>org.springframework.cloud</groupId>
 	<artifactId>spring-cloud-starter-config</artifactId>
 </dependency>
-
-
-b.
 <dependency>
 	<groupId>org.springframework.cloud</groupId>
 	<artifactId>spring-cloud-starter-bootstrap</artifactId>
 </dependency>
 ```
-
 2. Bootstrap.properties changes
-
 ```
 spring.profiles.active=default
 #connect to config server
@@ -178,7 +170,6 @@ spring.cloud.config.uri=http://localhost:8888
 management.security.enabled=false
 management.endpoints.web.exposure.include=*
 server.port=8111
-
 ```
 
 ## Enabling AOP logging for employee-management service
@@ -188,7 +179,6 @@ server.port=8111
 2. Added a new file for AOP log configuration AopLogger.java
 3. No dependency to be added
 4. Add below properties in the bootstrap.proprties file
-
 ```
 logging.file.name=logs/emp/employye-mgmt.log
 logging.level.com.example.employeemanagement=TRACE
