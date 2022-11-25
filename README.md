@@ -120,6 +120,41 @@ Delete Employee - DELETE - http://localhost:8711/employees/122222
 port : 8761
 url : http://localhost:8761/
 
+## Service 4 : config-service
+### Changes to add config service:
+1. Create a repo in github to store property files
+2. Create a springboot project with dependencies
+
+<dependency>
+		<groupId>org.springframework.cloud</groupId>
+		<artifactId>spring-cloud-config-server</artifactId>
+</dependency>
+
+
+#### This is needed for using bootstrap.property file configuration
+
+<dependency>
+		<groupId>org.springframework.cloud</groupId>
+		<artifactId>spring-cloud-starter-bootstrap</artifactId>
+</dependency>
+
+
+3. bootstrap.properties changes
+-------
+
+#Server port
+server.port = 8888
+#Git repo location
+spring.cloud.config.server.git.uri=https://github.com/vkwjope/microservices-2022-config-repo
+spring.cloud.config.server.git.cloneOnStart=false
+#Disable security of the Management endpoint
+management.security.enabled=false
+spring.cloud.config.server.bootstrap=true
+management.endpoints.web.exposure.include=*
+
+------- 
+
+
 
 ###### Pending changes
 * Add spring-gateway microservice
