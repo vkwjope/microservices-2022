@@ -38,7 +38,7 @@ http://localhost:8711/swagger-ui/index.html {API Gateway}
 1. @EnableEurekaClient annotaion to main class along with dependency
 2. Changes in application.yaml file
 application.yaml
----
+```
 spring:
   application:
     name: api-gateway
@@ -57,13 +57,12 @@ eureka:
     register-with-eureka: true
   instance:
     hostname: localhost
-    
----
+```
 ### Adding discovery service
 1. @EnableEurekaServer to main application file along with dependency
 2. Changes in application.yaml file
 application.yaml
----
+```
 spring:
   application:
     name: discovery-service
@@ -75,15 +74,14 @@ eureka:
     hostname: localhost
 server:
   port: 8761
-  
----
+```
 
 ### Changes in emp-service to register with Eureka and API Gateway
 
 1. @EnableEurekaClient annotaion to main class along with dependency
 2. Changes in application.yaml file
 application.yaml
----
+```
 server:
   port: 8111
 spring:
@@ -98,7 +96,7 @@ eureka:
   instance:
     hostname: localhost
     
----
+```
 
 ## Service 2: api-gateway
 port : 8711
@@ -124,23 +122,23 @@ url : http://localhost:8761/
 ### Changes to add config service:
 1. Create a repo in github to store property files
 2. Create a springboot project with dependencies
-
+```
 <dependency>
 		<groupId>org.springframework.cloud</groupId>
 		<artifactId>spring-cloud-config-server</artifactId>
 </dependency>
-
+```
 
 #### This is needed for using bootstrap.property file configuration
-
+```
 <dependency>
 		<groupId>org.springframework.cloud</groupId>
 		<artifactId>spring-cloud-starter-bootstrap</artifactId>
 </dependency>
-
+```
 
 3. bootstrap.properties changes
-----
+```
 #Server port
 server.port = 8888
 #Git repo location
@@ -151,12 +149,12 @@ management.security.enabled=false
 spring.cloud.config.server.bootstrap=true
 management.endpoints.web.exposure.include=*
 
-----
+```
 
 ## Changes in employee-management service to use config server 
 1. @RefreshScope annotation for controller class
 2. Dependencies to be added
-
+```
 a. 
 <dependency>
 	<groupId>org.springframework.cloud</groupId>
@@ -169,11 +167,11 @@ b.
 	<groupId>org.springframework.cloud</groupId>
 	<artifactId>spring-cloud-starter-bootstrap</artifactId>
 </dependency>
-
+```
 
 2. Bootstrap.properties changes
 
-----
+```
 spring.profiles.active=default
 #connect to config server
 spring.cloud.config.uri=http://localhost:8888
@@ -181,7 +179,7 @@ management.security.enabled=false
 management.endpoints.web.exposure.include=*
 server.port=8111
 
-----
+```
 
 ## Enabling AOP logging for employee-management service
 
@@ -191,25 +189,20 @@ server.port=8111
 3. No dependency to be added
 4. Add below properties in the bootstrap.proprties file
 
----
-
+```
 logging.file.name=logs/emp/employye-mgmt.log
-
 logging.level.com.example.employeemanagement=TRACE
-
 logging.pattern.file: %d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [${spring.application.name}, %X{X-B3-TraceId},%X{X-B3-SpanId},%X{X-Span-Export}] [%thread] %logger : %msg%n
-
 logging.logback.rollingpolicy.max-file-size=10MB
-
----
+```
 
 ###### Pending changes
-* Add spring-gateway microservice
-* Add Eureka Server
-* Add Config Server
-* Add AOP logging
+* ~~Add spring-gateway microservice~~
+* ~~Add Eureka Server~~
+* ~~Add Config Server~~
+* ~~Add AOP logging~~
 * Add a login service with OAuth token validation
-* Enable logs
+
 
 
 #### References:
