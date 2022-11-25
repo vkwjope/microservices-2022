@@ -183,6 +183,26 @@ server.port=8111
 
 ----
 
+## Enabling AOP logging for employee-management service
+
+#### Steps:
+1. Add @EnableAspectJAutoProxy annotation to MainApplication file
+2. Added a new file for AOP log configuration AopLogger.java
+3. No dependency to be added
+4. Add below properties in the bootstrap.proprties file
+
+---
+
+logging.file.name=logs/emp/employye-mgmt.log
+
+logging.level.com.example.employeemanagement=TRACE
+
+logging.pattern.file: %d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [${spring.application.name}, %X{X-B3-TraceId},%X{X-B3-SpanId},%X{X-Span-Export}] [%thread] %logger : %msg%n
+
+logging.logback.rollingpolicy.max-file-size=10MB
+
+---
+
 ###### Pending changes
 * Add spring-gateway microservice
 * Add Eureka Server
