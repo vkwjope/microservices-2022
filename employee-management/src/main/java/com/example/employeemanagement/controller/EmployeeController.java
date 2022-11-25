@@ -6,6 +6,8 @@ package com.example.employeemanagement.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,11 +31,20 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
  *
  */
 @RestController
+@RefreshScope
 @RequestMapping("/employees")
 public class EmployeeController {
 
 	@Autowired
 	private EmployeeService employeeService;
+
+	@Value("${msg:Config Server is not working. Verify configuration properties.}")
+	private String msg;
+
+	@GetMapping("/message")
+	public String getMessage() {
+		return this.msg;
+	}
 
 	@Operation(summary = "Add new employee")
 	@ApiResponses(value = {
