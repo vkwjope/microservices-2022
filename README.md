@@ -140,8 +140,7 @@ url : http://localhost:8761/
 
 
 3. bootstrap.properties changes
--------
-
+----
 #Server port
 server.port = 8888
 #Git repo location
@@ -152,9 +151,37 @@ management.security.enabled=false
 spring.cloud.config.server.bootstrap=true
 management.endpoints.web.exposure.include=*
 
-------- 
+----
+
+## Changes in employee-management service to use config server 
+1. @RefreshScope annotation for controller class
+2. Dependencies to be added
+
+a. 
+<dependency>
+	<groupId>org.springframework.cloud</groupId>
+	<artifactId>spring-cloud-starter-config</artifactId>
+</dependency>
 
 
+b.
+<dependency>
+	<groupId>org.springframework.cloud</groupId>
+	<artifactId>spring-cloud-starter-bootstrap</artifactId>
+</dependency>
+
+
+2. Bootstrap.properties changes
+
+----
+spring.profiles.active=default
+#connect to config server
+spring.cloud.config.uri=http://localhost:8888
+management.security.enabled=false
+management.endpoints.web.exposure.include=*
+server.port=8111
+
+----
 
 ###### Pending changes
 * Add spring-gateway microservice
