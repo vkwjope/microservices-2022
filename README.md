@@ -192,6 +192,7 @@ logging.logback.rollingpolicy.max-file-size=10MB
 * ~~Add Config Server~~
 * ~~Add AOP logging~~
 * Add a login service with OAuth token validation
+* Use Feign client for inter-service communication
 
 
 
